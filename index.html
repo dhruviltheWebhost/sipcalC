@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SIP CALc</title>
+    <link rel="stylesheet" href="gpt.css">
+</head>
+
+<body>
+
+    <div class="layer">
+        <div class="header">
+            <h1 class="grey">SIP CALCULATOR</h1>
+            <p class="grey">Calculate Your Return</p>
+        </div>
+        <div class="entry">
+            <div class="block"> <label for="sipa">Monthly SIP Amount :</label><input id="sipa" type="number"></div>
+            <div class="block"><label for="investing-Y">Number of Years of Investing :</label><input id="investing-Y"
+                    type="number"></div>
+            <div class="block"><label for="intrest-Y">Interest Percentage Per Year :</label><input id="intrest-Y"
+                    type="number"></div>
+        </div>
+        <div class="button"> <button class="submit" onclick="calculateSIP()">CALCULATE</button>
+            <div class="block"> <label for="total-invest">
+                    <h2>YOUR TOTAl INVESTMENT WILL BE :</h2>
+                </label><br><input id="total-invest" type="number" value="0" class="answer" disabled></div>
+            <label for="total-amount">
+                <h2>Amount With Return :</h2>
+            </label><input id="total-amount" type="number" value="0" class="answer" disabled>
+        </div>
+    </div>
+
+<script>
+       function calculateSIP(){
+        var sipAmount = parseFloat(document.getElementById('sipa').value);
+        var years = parseFloat(document.getElementById('investing-Y').value);
+        var interestRate = parseInt(document.getElementById('intrest-Y').value);
+
+        totalSipAmount = sipAmount * years * 12;
+
+        sipReturn =  Math.round(totalSipAmount * (1 + interestRate/100));
+
+        document.getElementById('total-invest').value = totalSipAmount;
+        document.getElementById('total-amount').value = sipReturn;
+    }
+
+</script>
+</body>
+
+</html>
